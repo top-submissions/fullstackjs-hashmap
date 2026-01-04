@@ -14,6 +14,12 @@ export default class HashMap {
   #hashTable;
   #size;
 
+  constructor(initialCapacity = 16) {
+    this.#capacity = initialCapacity;
+    this.#hashTable = new Array(initialCapacity).fill(null);
+    this.#size = 0;
+  }
+
   get capacity() {
     return this.#capacity;
   }
@@ -24,12 +30,6 @@ export default class HashMap {
 
   get hashTable() {
     return this.#hashTable;
-  }
-
-  constructor(initialCapacity = 16) {
-    this.#capacity = initialCapacity;
-    this.#hashTable = new Array(initialCapacity).fill(null);
-    this.#size = 0;
   }
 
   hash(key) {

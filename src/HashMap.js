@@ -29,4 +29,47 @@ export default class HashMap {
 
     return hashCode;
   }
+
+  isOutOfBounds(index) {
+    if (index < 0 || index >= this.hashTable.length) {
+      throw new Error('Trying to access index out of bounds');
+    }
+  }
+
+  set(key, value) {
+    // Check if we need to grow before adding
+    if (this.size >= this.capacity * this.LOAD_FACTOR) {
+      this.grow();
+    }
+
+    const index = this.hash(key);
+
+    // Bounds checking
+    this.isOutOfBounds(index);
+
+    // If bucket is empty, create new node
+    if (this.hashTable[index] === null) {
+      this.hashTable[index] = new Node(key, value);
+      this.size++;
+      return;
+    }
+
+    // Bucket has nodes - traverse linked list
+    let current = this.hashTable[index];
+    let previous = null;
+
+    while (current !== null) {
+      // Key exists - update value
+      if (current.key === key) {
+        current.value = value;
+        return;
+      }
+      previous = current;
+      current = current.next;
+    }
+
+    // Key doesn't exist - add to end of linked list
+    previous.next = new Node(key, value);
+    this.size++;
+  }
 }

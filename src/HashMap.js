@@ -202,7 +202,7 @@ export default class HashMap {
 
     // Double capacity
     this.#capacity *= 2;
-    this.clear;
+    this.clear();
 
     console.log(
       `Growth triggered! Capacity expanded from ${oldCapacity} to ${

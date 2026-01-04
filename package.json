@@ -1,0 +1,35 @@
+{
+  "name": "fullstackjs-hashmap",
+  "version": "1.0.0",
+  "description": "A complete HashMap implementation from scratch using JavaScript, featuring collision handling and dynamic resizing",
+  "type": "module",
+  "main": "HashMap.js",
+  "scripts": {
+    "test": "node ./test/test.js",
+    "test:hashset": "node ./test/testHashSet.js",
+    "test:all": "node test.js && node testHashSet.js"
+  },
+  "keywords": [
+    "hashmap",
+    "hash-table",
+    "data-structures",
+    "algorithms",
+    "javascript",
+    "the-odin-project",
+    "linked-list",
+    "collision-handling"
+  ],
+  "author": "top-submissions",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MatimotTheTimoters/fullstackjs-hashmap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MatimotTheTimoters/fullstackjs-hashmap/issues"
+  },
+  "homepage": "https://github.com/MatimotTheTimoters/fullstackjs-hashmap#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

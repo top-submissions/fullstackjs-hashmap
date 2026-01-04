@@ -134,4 +134,52 @@ export default class HashMap {
     this.hashTable = new Array(this.capacity).fill(null);
     this.size = 0;
   }
+
+  keys() {
+    const keysArray = [];
+
+    for (let i = 0; i < this.hashTable.length; i++) {
+      let current = this.hashTable[i];
+
+      // Traverse linked list at each bucket
+      while (current !== null) {
+        keysArray.push(current.key);
+        current = current.next;
+      }
+    }
+
+    return keysArray;
+  }
+
+  values() {
+    const valuesArray = [];
+
+    for (let i = 0; i < this.hashTable.length; i++) {
+      let current = this.hashTable[i];
+
+      // Traverse linked list at each bucket
+      while (current !== null) {
+        valuesArray.push(current.value);
+        current = current.next;
+      }
+    }
+
+    return valuesArray;
+  }
+
+  entries() {
+    const entriesArray = [];
+
+    for (let i = 0; i < this.hashTable.length; i++) {
+      let current = this.hashTable[i];
+
+      // Traverse linked list at each bucket
+      while (current !== null) {
+        entriesArray.push([current.key, current.value]);
+        current = current.next;
+      }
+    }
+
+    return entriesArray;
+  }
 }

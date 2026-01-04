@@ -72,4 +72,23 @@ export default class HashMap {
     previous.next = new Node(key, value);
     this.size++;
   }
+
+  get(key) {
+    const index = this.hash(key);
+
+    // Bounds checking
+    this.isOutOfBounds(index);
+
+    let current = this.hashTable[index];
+
+    // Traverse linked list to find key
+    while (current !== null) {
+      if (current.key === key) {
+        return current.value;
+      }
+      current = current.next;
+    }
+
+    return null; // Key not found
+  }
 }

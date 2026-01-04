@@ -125,4 +125,13 @@ export default class HashMap {
 
     return false; // Key not found
   }
+
+  length() {
+    return this.size;
+  }
+
+  clear() {
+    this.hashTable = new Array(this.capacity).fill(null);
+    this.size = 0;
+  }
 }

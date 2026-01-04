@@ -5,9 +5,7 @@
   "type": "module",
   "main": "HashMap.js",
   "scripts": {
-    "test": "node ./test/test.js",
-    "test:hashset": "node ./test/testHashSet.js",
-    "test:all": "node test.js && node testHashSet.js"
+    "test": "node ./test/test.js"
   },
   "keywords": [
     "hashmap",

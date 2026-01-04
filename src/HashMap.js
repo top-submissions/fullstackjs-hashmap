@@ -182,4 +182,59 @@ export default class HashMap {
 
     return entriesArray;
   }
+
+  grow() {
+    const oldHashTable = this.hashTable;
+    const oldCapacity = this.capacity;
+
+    // Double capacity
+    this.capacity *= 2;
+    this.clear;
+
+    console.log(
+      `Growth triggered! Capacity expanded from ${oldCapacity} to ${this.capacity}`
+    );
+
+    // Rehash all existing entries
+    for (let i = 0; i < oldHashTable.length; i++) {
+      let current = oldHashTable[i];
+
+      while (current !== null) {
+        // Re-insert each key-value pair with new hash
+        this.set(current.key, current.value);
+        current = current.next;
+      }
+    }
+
+    console.log(
+      `Rehashing complete. New load factor: ${(
+        this.size / this.capacity
+      ).toFixed(2)}`
+    );
+  }
+
+  // Utility method to visualize the hash table (for debugging)
+  display() {
+    console.log('\n--- HashMap Contents ---');
+    console.log(
+      `Capacity: ${this.capacity}, Size: ${this.size}, Load Factor: ${(
+        this.size / this.capacity
+      ).toFixed(2)}`
+    );
+
+    for (let i = 0; i < this.hashTable.length; i++) {
+      if (this.hashTable[i] !== null) {
+        let current = this.hashTable[i];
+        let bucketContents = [];
+
+        while (current !== null) {
+          bucketContents.push(`{${current.key}: ${current.value}}`);
+          current = current.next;
+        }
+
+        console.log(`Bucket ${i}: ${bucketContents.join(' -> ')}`);
+      }
+    }
+    console.log('------------------------\n');
+  }
 }

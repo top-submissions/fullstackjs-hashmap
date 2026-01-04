@@ -91,4 +91,38 @@ export default class HashMap {
 
     return null; // Key not found
   }
+
+  has(key) {
+    return this.get(key) !== null;
+  }
+
+  remove(key) {
+    const index = this.hash(key);
+
+    // Bounds checking
+    this.isOutOfBounds(index);
+
+    let current = this.hashTable[index];
+    let previous = null;
+
+    // Traverse linked list to find key
+    while (current !== null) {
+      if (current.key === key) {
+        // Found the key - remove it
+        if (previous === null) {
+          // Removing head of linked list
+          this.hashTable[index] = current.next;
+        } else {
+          // Removing from middle or end
+          previous.next = current.next;
+        }
+        this.size--;
+        return true;
+      }
+      previous = current;
+      current = current.next;
+    }
+
+    return false; // Key not found
+  }
 }
